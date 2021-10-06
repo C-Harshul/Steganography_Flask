@@ -6,10 +6,10 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 
-@app.route('/read',methods = ['GET'])
-def read():
-    ts = datetime.datetime.now().timestamp()
-    fileName = ts + ".wav"
+@app.route('/read/<string:timestamp>',methods = ['GET'])
+def read(timestamp):
+    
+    fileName = timestamp + ".wav"
     print(fileName)
     song = wave.open(fileName, mode='rb')
 # Convert audio to byte array
