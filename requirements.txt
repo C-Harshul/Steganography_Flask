@@ -92,6 +92,7 @@ numpy==1.17.4
 oauthlib==3.1.0
 olefile==0.46
 paramiko==2.6.0
+pbr==5.6.0
 pexpect==4.6.0
 Pillow==7.0.0
 protobuf==3.6.1
@@ -210,6 +211,7 @@ smach==2.5.0
 smach-ros==2.5.0
 smclib==1.8.6
 systemd-python==234
+testresources==2.0.1
 tf==1.13.2
 tf-conversions==1.13.2
 tf2-geometry-msgs==0.7.5
