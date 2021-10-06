@@ -1,1 +1,1 @@
-web: python3 steganography.py
+web: gunicorn app:app
