@@ -1,12 +1,17 @@
 import wave
+import datetime
 from flask import Flask, jsonify, request
   
 # creating a Flask app
 app = Flask(__name__)
 
+
 @app.route('/read',methods = ['GET'])
 def read():
-    song = wave.open("song_embedded.wav", mode='rb')
+    ts = datetime.datetime.now().timestamp()
+    fileName = ts + ".wav"
+    print(fileName)
+    song = wave.open(fileName, mode='rb')
 # Convert audio to byte array
     frame_bytes = bytearray(list(song.readframes(song.getnframes())))
 
@@ -24,6 +29,10 @@ def read():
 
 @app.route('/hide/<string:message>', methods = ['GET'])
 def disp(message):
+    ts = datetime.datetime.now().strftime("%m:%d:%Y %H:%M:%S")
+    print(ts)
+    fileName = ts + ".wav"
+    print(fileName)
     song = wave.open("song.wav", mode='rb')
     frame_bytes = bytearray(list(song.readframes(song.getnframes())))
 
@@ -36,7 +45,7 @@ def disp(message):
         frame_bytes[i] = (frame_bytes[i] & 254) | bit
     frame_modified = bytes(frame_bytes)
 
-    with wave.open('song_embedded.wav', 'wb') as fd:
+    with wave.open(fileName, 'wb') as fd:
         fd.setparams(song.getparams())
         fd.writeframes(frame_modified)
     song.close()
