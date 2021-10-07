@@ -77,7 +77,7 @@ async def disp(message):
     storage.child(storageLocation).put(fileName)
     print("Uploaded")
     os.remove(fileName)
-    return jsonify({'data': message})
+    return jsonify({'data': message,'timestamp':ts})
 
 
 # driver function
