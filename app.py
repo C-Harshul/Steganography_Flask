@@ -71,6 +71,7 @@ def disp(message):
     song.close()
     storageLocation = "audio/" + fileName
     storage.child(storageLocation).put(fileName)
+    print("Uploaded")
     os.remove(fileName)
     return jsonify({'data': message})
 
