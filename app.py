@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import wave
+from random import randint
 import os 
 import datetime
 import pyrebase
@@ -19,7 +20,7 @@ storage = firebase.storage()
 
 # creating a Flask app
 app = Flask(__name__)
-
+songList = ['song.wav','song2.wav','song3.wav']
 
 @app.route('/read/<string:timestamp>', methods=['GET'])
 async def read(timestamp):
@@ -54,7 +55,10 @@ async def disp(message):
     print(ts)
     fileName = ts + ".wav"
     print(fileName)
-    song = wave.open("song.wav", mode='rb')
+    index = randint(0, 2)
+    print(index)
+    songName = songList[index]
+    song = wave.open(songName, mode='rb')
     frame_bytes = bytearray(list(song.readframes(song.getnframes())))
 
     string = message
