@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
 import wave
-import asyncio
 import os 
 import datetime
 import pyrebase
