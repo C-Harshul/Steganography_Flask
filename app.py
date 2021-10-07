@@ -49,7 +49,7 @@ async def read(timestamp):
 
 
 @app.route('/hide/<string:message>', methods=['GET'])
-def disp(message):
+async def disp(message):
     ts = datetime.datetime.now().strftime("%m:%d:%Y %H:%M:%S")
     print(ts)
     fileName = ts + ".wav"
@@ -72,7 +72,6 @@ def disp(message):
     storageLocation = "audio/" + fileName
     storage.child(storageLocation).put(fileName)
     print("Uploaded")
-    os.remove(fileName)
     return jsonify({'data': message})
 
 
