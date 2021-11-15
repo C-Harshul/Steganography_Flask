@@ -2,9 +2,6 @@ from flask import Flask, jsonify, request
 import wave
 from random import randint
 import os 
-import io
-import base64
-import PIL.Image as Image
 import datetime
 import pyrebase
 import cv2
